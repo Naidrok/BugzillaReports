@@ -446,7 +446,7 @@ class BugzillaQuery extends BSQLQuery {
           # Support generic argument syntax
           # 
           if ($type == 'filters') {
-            $args=split("%26",$fieldValue);
+            $args=explode("%26",$fieldValue);
             foreach ($args as $arg) {
               $this->context
                 ->debug("Processing filter : $arg");              
@@ -454,7 +454,7 @@ class BugzillaQuery extends BSQLQuery {
               # Match for encoded =
               #
               if (preg_match("/%3D/",$arg)) {
-                $parts=split("%3D",$arg);
+                $parts=explode("%3D",$arg);
                 $argColumn=$parts[0];
                 $argFieldValue=$parts[1];
                 if ($this->isCustomField($argColumn)) {
